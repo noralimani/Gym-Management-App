@@ -1,0 +1,66 @@
+﻿@model IEnumerable<GymManagementSystem.Models.Membership>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-12 mb-1">
+        <a class="btn btn-primary" asp-action="Create">Create New Membership</a>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-vcenter card-table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Staff_Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Member_Id)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.StartDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EndDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Total)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Staff.Staff_Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Member.Member_Name)
+                                </td>
+                                <td>
+                                    @String.Format("{0:dd/MM/yyyy}", item.StartDate)
+                                </td>
+                                <td>
+                                    @String.Format("{0:dd/MM/yyyy}", item.EndDate)
+                                </td>
+                                <td>
+                                    @item.Total MKD
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Membership_Id">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.Membership_Id">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Membership_Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>              
+    </div>
+</div>

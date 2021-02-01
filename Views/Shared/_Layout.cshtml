@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-signin-client_id" content="1026237673370-ttsnt5237neo4i17f2k874tr3ro37oug.apps.googleusercontent.com">
+    <title>@ViewData["Title"] - GymManagementSystem</title>
+    <link rel="stylesheet" href="~/css/tabler.min.css">
+    <link rel="stylesheet" href="~/css/main.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class="antialiased">
+    <div class="page">
+
+        <partial name="_LoginPartial" />
+
+        <div class="content">
+            <div class="container-xl">
+                <!-- Page title -->
+                <div class="page-header text-white d-print-none">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h2 class="page-title">
+                                @ViewData["Title"]
+
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/tabler.min.js"></script>
+    <script src="~/js/main.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

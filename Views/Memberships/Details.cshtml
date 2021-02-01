@@ -1,0 +1,58 @@
+﻿@model GymManagementSystem.Models.Membership
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    Membership Details
+                </h3>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-5">
+                        @Html.DisplayNameFor(model => model.Staff.Staff_Name):
+                    </dt>
+                    <dd class="col-7">
+                        @Model.Staff.Staff_Name
+                    </dd>
+                    <dt class="col-5">
+                        @Html.DisplayNameFor(model => model.Member.Member_Name):
+                    </dt>
+                    <dd class="col-7">
+                        @Model.Member.Member_Name
+                    </dd>
+                    <dt class="col-5">
+                        @Html.DisplayNameFor(model => model.StartDate):
+                    </dt>
+                    <dd class="col-7">
+                        @Html.DisplayFor(model => model.StartDate)
+                    </dd>
+                    <dt class="col-5">
+                        @Html.DisplayNameFor(model => model.EndDate):
+                    </dt>
+                    <dd class="col-7">
+                        @Html.DisplayFor(model => model.EndDate)
+                    </dd>
+                    <dt class="col-5">
+                        @Html.DisplayNameFor(model => model.Total):
+                    </dt>
+                    <dd class="col-7">
+                        @Model.Total MKD
+                    </dd>
+                </dl>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+                <a asp-action="Edit" asp-route-id="@Model.Membership_Id">Edit</a> 
+                <a asp-action="Index">Back to List</a>
+            </div>
+
+        </div>       
+    </div>
+</div>

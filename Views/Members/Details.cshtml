@@ -1,0 +1,67 @@
+﻿@model GymManagementSystem.Models.Member
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    Member Details
+                </h3>
+            </div>
+            <div class="card-body">
+                <dl class="row">
+                    <dt class="col-5">Name:</dt>
+                    <dd class="col-7"> @Html.DisplayFor(model => model.Member_Name)</dd>
+                    <dt class="col-5">Surname:</dt>
+                    <dd class="col-7"> @Html.DisplayFor(model => model.Member_Surname)</dd>
+                    <dt class="col-5">Phone:</dt>
+                    <dd class="col-7"> @Html.DisplayFor(model => model.Phone)</dd>
+                    <dt class="col-5">Email:</dt>
+                    <dd class="col-7"> @Html.DisplayFor(model => model.Email)</dd>
+                    <dt class="col-5">Joined Date:</dt>
+                    <dd class="col-7"> @Html.DisplayFor(model => model.Days) days</dd>
+                </dl>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+                <a asp-action="Edit" asp-route-id="@Model.Member_Id">Edit</a> 
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>      
+    </div>
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">              
+                <h3 class="card-title">
+                    Memberships for @Model.Member_Name
+                </h3>
+            </div>
+            <table class="table table-vcenter card-table">
+                <thead>
+                    <tr>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Total</th>
+                        <th class="w-1"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var membership in Model.Memberships)
+                    {
+                        <tr>
+                            <td>@String.Format("{0:dd/MM/yyyy}", membership.StartDate)</td>
+                            <td>@String.Format("{0:dd/MM/yyyy}", membership.EndDate)</td>
+                            <td>@membership.Total</td>
+                            <td> <a href="/Memberships/Details/@membership.Membership_Id">Details</a> </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>           
+        </div>
+    </div>
+</div>
+

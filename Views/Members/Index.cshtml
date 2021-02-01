@@ -1,0 +1,71 @@
+﻿@model IEnumerable<GymManagementSystem.Models.Member>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+
+            <div class="card-body border-bottom py-3">
+                <div class="d-flex justify-content-between">                                                                
+                        <div class="ms-2 d-inline-block ">
+                            <form asp-action="Index" method="get">
+                                <input type="text" name="keyword" value="@ViewData["CurrentFilter"]" />
+                                <input type="submit" value="Search" class="btn btn-primary" />
+                            </form>
+                        </div>
+                        
+                        <div class="text-muted">
+                            <div class="mx-2 d-inline-block">
+                                <a class="btn btn-primary" asp-action="Create">Create New Member</a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table card-table table-vcenter text-nowrap datatable">
+                    <thead>
+                        <tr>
+                            <th> @Html.DisplayNameFor(model => model.Member_Name)</th>
+                            <th>@Html.DisplayNameFor(model => model.Member_Surname)</th>
+                            <th>@Html.DisplayNameFor(model => model.Phone).</th>
+                            <th> @Html.DisplayNameFor(model => model.Email)</th>
+                            <th>@Html.DisplayNameFor(model => model.JoinedDate)</th>
+                            <th class="w-1"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Member_Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Member_Surname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.JoinedDate)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Member_Id">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.Member_Id">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Member_Id">Delete</a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
